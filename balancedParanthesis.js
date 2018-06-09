@@ -1,29 +1,37 @@
-function decide(input) {
-  const openedBrace = ['(','[','{'];
-  const closeBrace = [')',']','}'];
-  const map = {')' : '(' , ']': '[', '}':'{'};
-  
-  const arrSplit = input.split('');
-  const tempArr = [];
-  
-  arrSplit.forEach((entry) => {
-    if (closeBrace.includes(entry)) {
-      const last = tempArr[tempArr.length - 1];
+function isBalanced(inputString){
+  const input = inputString.match(/[(){}[\]]/g).join('');
+  let result = [];
 
-      if (!last) {
-      	console.log('Its undefined');
-      }
+  if (input.length % 2 !== 0) {
+    return false;
+  }
 
-      if(tempArr[map[entry]]) {
-        tempArr.pop(map[entry]);
+  for(let i = 0; i < input.length; i++) {
+    if (openBracket(input[i])) {
+      result.push(input[i]);
+    } else {
+      const lastItem = result.pop();
+
+      if(lastItem !== getMapping(input[i])) {
+        return false;
       }
     }
-    
-    
-    if (openedBrace.includes(entry)) {
-      tempArr.push(entry);
-    }
-  });
+  }
+
+  const isBalancedBrackets = result.length ? false : true;
+  return isBalancedBrackets;
 }
 
-console.log(decide('}'));
+function getMapping(char) {
+  const mapping = {')' : '(', '}' : '{', ']' : '['};
+  return mapping[char];
+}
+
+function openBracket(char) {
+  const acceptableOpenBrackets = '{([';
+  return acceptableOpenBrackets.includes(char);
+}
+
+const str = '(';
+
+console.log(isBalanced(str));
