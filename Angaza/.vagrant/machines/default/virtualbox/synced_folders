@@ -1,0 +1,1 @@
+{"virtualbox":{"/home/vagrant/Projects/Angaza":{"create":true,"guestpath":"/home/vagrant/Projects/Angaza","hostpath":"/Users/sushil.magar/Projects/Angaza_ACME_Backend_SMS","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/sushil.magar/Documents/coding-challenges/Angaza","disabled":false,"__vagrantfile":true}}}

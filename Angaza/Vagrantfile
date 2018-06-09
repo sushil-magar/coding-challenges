@@ -1,0 +1,38 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+VAGRANTFILE_API_VERSION = "2" # Don't touch unless you know what you're doing!
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+    # box config
+    config.vm.box = "angaza/acme_backend_sms"
+    config.vm.box_url = "https://s3.amazonaws.com/angaza-misc/vagrant/acme_backend_sms.box"
+
+    # network config
+    config.vm.network "private_network", ip: "172.1.2.4"
+    config.vm.network "public_network"
+
+    # SSH config
+    config.ssh.forward_agent = true
+    config.ssh.insert_key = false # keep the default key so that it stays in the packaged box
+
+    # synced directory config
+    synced_path_raw = ENV["ZA_DEV_SYNCED_FOLDER"]
+    synced_path_raw = "~/Projects/Angaza_ACME_Backend_SMS" if synced_path_raw.nil?
+
+    config.vm.synced_folder File.expand_path(synced_path_raw),
+                                             "/home/vagrant/Projects/Angaza",
+                                             :create => true
+
+    # provider config
+    config.vm.provider "virtualbox" do |vb|
+        vb.gui = false
+
+        # Use VBoxManage to customize the VM. Note that we do *not* enable
+        # additional cores; in our experience, bizarrely, VirtualBox runs
+        # fastest with a single core
+        vb.customize ["modifyvm", :id, "--memory", "2048"]
+    end
+
+    config.vm.provision :shell, inline: "tar zvx --skip-old-files -f .project.tar.gz"
+end
