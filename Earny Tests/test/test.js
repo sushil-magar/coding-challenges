@@ -50,12 +50,12 @@ describe('Find unique array of elements', () => {
 
   it('should return an array with correct values', () => {
     const arr = [1,3,4,5,6,6,3,2,1,2,3];
-    assert.deepEqual(findUnique(arr), [1,3,4,5,6,2]);
+    assert.deepStrictEqual(findUnique(arr), [1,3,4,5,6,2]);
   });
 
   it('should return input array if length of input array is 1', () => {
     const arr = [1];
-    assert.deepEqual(findUnique(arr), [1]);
+    assert.deepStrictEqual(findUnique(arr), [1]);
   });
 });
 
