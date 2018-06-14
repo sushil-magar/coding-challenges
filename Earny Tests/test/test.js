@@ -52,6 +52,11 @@ describe('Find unique array of elements', () => {
     const arr = [1,3,4,5,6,6,3,2,1,2,3];
     assert.deepEqual(findUnique(arr), [1,3,4,5,6,2]);
   });
+
+  it('should return input array if length of input array is 1', () => {
+    const arr = [1];
+    assert.deepEqual(findUnique(arr), [1]);
+  });
 });
 
 describe('Event emitter', () => {
