@@ -7,11 +7,18 @@ const EventEmitter = require('./../EventEmitter/eventEmitter');
 const assert = require('assert');
 
 describe('Palindrome', () => {
-  it('should return error message', () => {
+  it('should return error message if no input was given', () => {
     const errMessage = 'Cannot find palindrome if the input is missing.'
-
     assert.equal(isPalindrome(), errMessage);
+  });
+
+  it('should return error message if input was empty string', () => {
+    const errMessage = 'Cannot find palindrome if the input is missing.'
     assert.equal(isPalindrome(''), errMessage);
+  });
+
+  it('should return error message if the input was not a string', () => {
+    const errMessage = 'Cannot find palindrome if the input is missing.'
     assert.equal(isPalindrome(1221), errMessage);
   });
 
@@ -37,10 +44,19 @@ describe('LimitedAlert', () => {
 
 describe('Find unique array of elements', () => {
   it('should return false if no input was provided', () => {
-    assert.equal(findUnique([]), false);
+    assert.equal(findUnique(), false);
+  });
+
+  it('should return false if empty array input was provided', () => {
+    assert.equal(findUnique(), false);
+  });
+
+  it('should return false if empty string input was provided', () => {
     assert.equal(findUnique(''), false);
-    assert.equal(findUnique([]), false);
-    assert.equal(findUnique([]), false);
+  });
+
+  it('should return false if boolean input was provided', () => {
+    assert.equal(findUnique(true), false);
   });
 
   it('should return an array', () => {
