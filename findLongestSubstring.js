@@ -11,15 +11,19 @@ Given "pwwkew", the answer is "wke", with the length of 3. Note that the answer 
  */
 
  function findLongestSubstring(str){
-   let set = new Set();
-   let length = str.length;
-   let i =0;
+   let map = new Map();
+   let maxSubstringSize = 0;
 
-   while(length) {
-     if (set.has(str[i]))
+   for (let j = 0, i =0; j < str.length; j++) {
+     if (map.has(str[i])) {
+       i = Math.max(map.get(str[j]), i);
+     }
+
+     maxSubstringSize = Math.max(maxSubstringSize, j - i + 1);
+     map.set(str[j], j + 1);
    }
 
-   return result;
+   return maxSubstringSize;
  }
 
  console.log(findLongestSubstring('abcabcbb'))

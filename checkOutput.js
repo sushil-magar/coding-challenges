@@ -1,3 +1,4 @@
+/*
 function getArr() {
   const arr = [];
 
@@ -13,3 +14,10 @@ function getArr() {
 const arr = getArr();
 setTimeout(() => console.log(arr));
 console.log(arr);
+*/
+
+var y = 1;
+  if (function f(){}) {
+    y += typeof f;
+  }
+  console.log(y);

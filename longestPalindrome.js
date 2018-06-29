@@ -38,5 +38,35 @@ function findLongestPalindrome(word) {
   return longestItems;
 }
 
-const input = 'abaccddcceffffe';
+const input = "cbbd";
 console.log(findLongestPalindrome(input));
+
+
+
+// var longestPalindrome = function(s) {
+//   const isPalindrome = (str) => str.split('').reverse().join('') === str;
+  
+//   if (s.length === 1) {
+//     return s;
+//   }
+
+//   if (s.length === 2 && isPalindrome(s)) {
+//     return s;
+//   }
+
+//   let max = 0;
+//   let result = '';
+
+//   for (let i = 0, j = 0; i < s.length; i++) {
+//     let str = s.substr(j, i + 1);
+
+//     if (isPalindrome(str)) {
+//       max = str.length;
+//       result = str;
+//     } else {
+
+//     }
+//   }
+// };
+
+// console.log(longestPalindrome('babad'));
